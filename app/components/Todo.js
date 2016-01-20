@@ -57,6 +57,16 @@ class Todo extends React.Component {
         return this.state;
     }
 
+    clearCompleted () {
+        const confirm = window.confirm('Are you sure you want to delete all completed tasks?');
+        if (confirm) {
+            const newTodos = this.state.todos;
+            const filteredTodos = newTodos.filter( task => { return !task.isDone });
+            this.setState({ todos: filteredTodos });
+            return this.state;
+        }
+    }
+
     setFilter (filter) {
         this.setState({ filter: filter });
     }
@@ -71,6 +81,7 @@ class Todo extends React.Component {
                           removeTodo={ (id) => this.removeTodo(id) }
                           editTodo={ (id, value) => this.editTodo(id, value) }/>
                 <TodoMeta list={this.state.todos} filter={this.state.filter}
+                          clearCompleted={ () => this.clearCompleted() }
                           setFilter={ (filter) => this.setFilter(filter) }/>
             </div>
         );

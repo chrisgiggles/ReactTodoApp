@@ -103,6 +103,20 @@ li input[type=text]:focus {
 	color: #0fb779;
 }
 
+.clear-todos {
+	margin: 20px;
+	text-align: center;
+	font-size: 13px;
+}
+
+.clear-todos a {
+	padding: 5px 10px;
+	background-color: #dd1144;
+	color: white;
+	text-decoration: none;
+	border-radius: 20px;
+}
+
 .view-filter {
 	margin: 20px;
 	text-align: center;

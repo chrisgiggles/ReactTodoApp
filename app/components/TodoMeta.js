@@ -19,6 +19,12 @@ class TodoMeta extends React.Component {
         
         return (
             <div>
+                { this.props.filter == 'completed'
+                    ?
+                    <div className="clear-todos">
+                        <a href="#" onClick={ ()=> {this.props.clearCompleted() }}>Clear completed</a>
+                    </div>
+                    : ''}
                 <div className="view-filter">
                     <a href="#" data-filter="all"
                        className={ this.props.filter === 'all' ? 'active' : ''}
@@ -39,7 +45,8 @@ class TodoMeta extends React.Component {
 TodoMeta.propTypes = {
     list: React.PropTypes.array,
     filter: React.PropTypes.string,
-    setFilter: React.PropTypes.func
+    setFilter: React.PropTypes.func,
+    clearCompleted: React.PropTypes.func
 };
 
 export default TodoMeta;
