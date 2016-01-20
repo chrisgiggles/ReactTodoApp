@@ -5,7 +5,6 @@ class TodoForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isValid: false,
             value: ''
         };
     }
@@ -19,10 +18,6 @@ class TodoForm extends React.Component {
     }
 
     handleChange(e) {
-        /*
-         * Using a callback as second param for setState to ensure that
-         * this.state.value has been updated before setting this.state.isValid
-         */
         this.setState({ value: e.target.value });
     }
 
