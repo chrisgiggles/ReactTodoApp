@@ -19,12 +19,6 @@ class TodoMeta extends React.Component {
         
         return (
             <div>
-                { this.props.filter == 'completed'
-                    ?
-                    <div className="clear-todos">
-                        <a href="#" onClick={ ()=> {this.props.clearCompleted() }}>Clear completed</a>
-                    </div>
-                    : ''}
                 <div className="view-filter">
                     <a href="#" data-filter="all"
                        className={ this.props.filter === 'all' ? 'active' : ''}
@@ -36,6 +30,11 @@ class TodoMeta extends React.Component {
                        className={ this.props.filter === 'completed' ? 'active' : ''}
                        onClick={ (e) => { this.props.setFilter(e.target.dataset.filter) }}>View Completed</a>
                 </div>
+                { this.props.filter == 'completed'
+                ? <div className="clear-todos">
+                    <a href="#" onClick={ ()=> {this.props.clearCompleted() }}>Clear completed</a>
+                </div>
+                : ''}
                 <p className="stats">{message()}</p>
             </div>
         );

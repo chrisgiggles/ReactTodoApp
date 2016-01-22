@@ -12,7 +12,7 @@ class TodoList extends React.Component {
 
     handleEdit (e, id) {
         this.setState({ editing: id, text: e.target.value});
-        this.props.editTodo(id, e.target.value.trim());
+        this.props.editTodo(id, e.target.value);
         this.setState({ editing: null, text: null});
     }
 
@@ -37,8 +37,7 @@ class TodoList extends React.Component {
                     <input type="checkbox" checked={isDone} onChange={ () => this.props.updateDone(id, isDone) } />
                     <input type="text" value={id == this.state.editing ? this.state.text : text}
                            disabled={isDone}
-                           onChange={ (e) => this.handleEdit(e, id) }
-                           />
+                           onChange={ (e) => this.handleEdit(e, id) } />
                     { isDone ? '' : <button onClick={ () => this.props.removeTodo(id) }>x</button> }
                 </li>
             );

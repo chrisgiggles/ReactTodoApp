@@ -21,11 +21,14 @@ class Todo extends React.Component {
 
     handleSubmit (value) {
         const newTodos = this.state.todos;
-        newTodos.push({
-            text: value,
-            isDone: false,
-            id: this.incrementID(this.state.ids)
-        });
+        if (value && typeof value == 'string') {
+            newTodos.push({
+                text: value,
+                isDone: false,
+                id: this.incrementID(this.state.ids)
+            });
+        }
+
         this.setState({ todos: newTodos });
         return this.state;
     }
