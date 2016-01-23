@@ -28,7 +28,6 @@ class Todo extends React.Component {
                 id: this.incrementID(this.state.ids)
             });
         }
-
         this.setState({ todos: newTodos });
         return this.state;
     }
@@ -52,12 +51,16 @@ class Todo extends React.Component {
     }
 
     editTodo (id, value) {
-        const newTodos = this.state.todos;
-        const task = newTodos.filter( task => { return task.id == id });
-        const index = newTodos.indexOf(task[0]);
-        newTodos[index].text = value;
-        this.setState({ todos: newTodos });
-        return this.state;
+        if (value && typeof value == 'string') {
+            const newTodos = this.state.todos;
+            const task = newTodos.filter( task => { return task.id == id });
+            const index = newTodos.indexOf(task[0]);
+            if (index >= 0) {
+                newTodos[index].text = value;
+                this.setState({ todos: newTodos });
+                return this.state;
+            }
+        }
     }
 
     clearCompleted () {
