@@ -34,7 +34,7 @@ describe('Todo', function() {
     it('expects id to be a number', function() {
         todo.handleSubmit('Hello');
         todo.handleSubmit('There');
-        todo.handleSubmit('Sailors');
+        todo.handleSubmit('Friends');
         expect(todo.state.todos[0].id).toBeA('number');
     });
 
